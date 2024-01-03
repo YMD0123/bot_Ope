@@ -1,5 +1,4 @@
 import discord
-import sys
 import os
 from keep_alive import keep_alive
 
@@ -23,6 +22,6 @@ async def on_message(message):
         await message.channel.send(x_url)
     
 TOKEN = os.getenv("DISCORD_TOKEN")
-# Web サーバの立ち上げ
+#Web サーバの立ち上げ
 keep_alive()
-client.run(sys.argv[1])
+client.run(TOKEN)
