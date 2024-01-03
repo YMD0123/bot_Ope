@@ -7,9 +7,6 @@
 import discord
 import sys
 
-# 自分のBotのアクセストークンに置き換えてください
-TOKEN = sys.argv[1]
-
 # 接続に必要なオブジェクトを生成
 client = discord.Client(intents=discord.Intents.all())
 
@@ -35,4 +32,4 @@ async def on_message(message):
         await message.channel.send(x_url)
     
 # Botの起動とDiscordサーバーへの接続
-client.run(TOKEN)
+client.run(sys.argv[1])
