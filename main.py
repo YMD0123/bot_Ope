@@ -22,7 +22,7 @@ async def on_message(message):
         x_url = "https://vxtwitter.com/" + message.content[14:]
         await message.channel.send(x_url)
     
-TOKEN = os.getenv(sys.argv[1])
+TOKEN = os.getenv("DISCORD_TOKEN")
 # Web サーバの立ち上げ
 keep_alive()
 client.run(sys.argv[1])
