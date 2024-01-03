@@ -1,8 +1,14 @@
+#TO DO
+#下のURL見ながらトークン死守頑張って
+#https://qiita.com/raiga0310/items/d5c7b0f852527b82d786
+#https://qiita.com/harukikaneko/items/b004048f8d1eca44cba9
+
 # インストールした discord.py を読み込む
 import discord
+import sys
 
 # 自分のBotのアクセストークンに置き換えてください
-TOKEN = 'MTE4OTkyMjY0NTY5NzkwNDc5MA.GBgD7A.TF0NM9d2PLQTHWNDZs5mEEDpsjHmLaS_Y1Icxc'
+TOKEN = sys.argv[1]
 
 # 接続に必要なオブジェクトを生成
 client = discord.Client(intents=discord.Intents.all())
@@ -20,16 +26,11 @@ async def on_message(message):
     # メッセージ送信者がBotだった場合は無視する
     str_box = message.content
     if message.author.bot:
-        return
-    if message.content == "/clean":
-        #特定行または指定範囲のコメント消したいなぁー
         return 
-    if str_box[0:19] == "https://twitter.com":
-        #機能はこの2行で完了
+    elif str_box[0:19] == "https://twitter.com":
         x_url = "https://vxtwitter.com/" + message.content[20:]
         await message.channel.send(x_url)
-        #区切り場所と引数で処理変更すれば関数になるよ
-    if str_box[0:13] == "https://x.com":
+    elif str_box[0:13] == "https://x.com":
         x_url = "https://vxtwitter.com/" + message.content[14:]
         await message.channel.send(x_url)
     
