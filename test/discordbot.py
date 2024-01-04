@@ -1,6 +1,6 @@
 
 import discord
-import os, sys, datetime, json
+import sys
 
 class MyClient(discord.Client):
   #メッセージが書き込まれた時
