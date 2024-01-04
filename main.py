@@ -2,9 +2,7 @@ import discord
 import os
 from keep_alive import keep_alive
 
-print("start")
 client = discord.Client(intents=discord.Intents.default())
-
 
 @client.event
 async def on_ready():
@@ -12,12 +10,10 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    # メッセージ送信者がBotだった場合は無視する
-    str_box = message.content
     if message.author.bot:
-        return 
-    elif message.content == "/hi":
-        await message.channel.send("hi")
+      return
+    else:
+      await message.channel.send("hello")
 
 TOKEN = os.getenv("DISCORD_TOKEN")
 # Web サーバの立ち上げ
