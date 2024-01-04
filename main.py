@@ -6,7 +6,7 @@ client = discord.Client(intents=discord.Intents.default())
 
 @client.event
 async def on_ready():
-    print('ログインしました')
+  print('ログインしました')
 
 @client.event
 async def on_message(message):
