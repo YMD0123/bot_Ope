@@ -16,6 +16,8 @@ async def on_message(message):
     str_box = message.content
     if message.author.bot:
         return 
+    elif message.content == "/hi":
+        await message.channel.send("hi")
 
 TOKEN = os.getenv("DISCORD_TOKEN")
 # Web サーバの立ち上げ
