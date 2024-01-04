@@ -9,7 +9,7 @@ import sys
 
 # 接続に必要なオブジェクトを生成
 client = discord.Client(intents=discord.Intents.all())
-
+print("実行開始")
 # 起動時に動作する処理
 @client.event
 async def on_ready():

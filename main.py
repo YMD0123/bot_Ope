@@ -2,7 +2,9 @@ import discord
 import os
 from keep_alive import keep_alive
 
+print("start")
 client = discord.Client(intents=discord.Intents.default())
+
 
 @client.event
 async def on_ready():
@@ -20,6 +22,7 @@ async def on_message(message):
     elif str_box[0:13] == "https://x.com":
         x_url = "https://vxtwitter.com/" + message.content[14:]
         await message.channel.send(x_url)
+
 
 TOKEN = os.getenv("DISCORD_TOKEN")
 # Web サーバの立ち上げ
