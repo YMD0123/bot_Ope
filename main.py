@@ -1,6 +1,6 @@
 import discord
 import os
-from keep_alive import keep_alive
+import keep_alive
 
 client = discord.Client(intents=discord.Intents.default())
 
@@ -10,6 +10,7 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+  print("test")
   str_box = message.content
   if message.author.bot:
     return
