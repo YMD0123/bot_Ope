@@ -1,37 +1,38 @@
-#TO DO
-#下のURL見ながらトークン死守頑張って
-#https://qiita.com/raiga0310/items/d5c7b0f852527b82d786
-#https://qiita.com/harukikaneko/items/b004048f8d1eca44cba9
 
-# インストールした discord.py を読み込む
 import discord
-import sys
+import os, sys, datetime, json
 
-# 接続に必要なオブジェクトを生成
-client = discord.Client(intents=discord.Intents.all())
-print("実行開始")
-# 起動時に動作する処理
-@client.event
-async def on_ready():
-    #BOT起動時の処理
-    print('ログインしました')
-
-
-# メッセージ受信時に動作する処理
-@client.event
-async def on_message(message):
-    # メッセージ送信者がBotだった場合は無視する
+class MyClient(discord.Client):
+  #メッセージが書き込まれた時
+  async def on_message(self, message):
     str_box = message.content
+    #送信者がbot自身の場合はコマンドを無効にする
     if message.author.bot:
-        return 
+      return
+    elif "/stop" in message.content:
+      #ログオフ
+      await message.channel.send("Goodbye")
+      await self.close()
+      return 
     elif message.content == "/hi":
-        await message.channel.send("hi")
+      await message.channel.send("hi")
     elif str_box[0:19] == "https://twitter.com":
-        x_url = "https://vxtwitter.com/" + message.content[20:]
-        await message.channel.send(x_url)
+      x_url = "https://vxtwitter.com/" + message.content[20:]
+      await message.channel.send(x_url)
     elif str_box[0:13] == "https://x.com":
-        x_url = "https://vxtwitter.com/" + message.content[14:]
-        await message.channel.send(x_url)
-    
-# Botの起動とDiscordサーバーへの接続
-client.run(sys.argv[1])
+      x_url = "https://vxtwitter.com/" + message.content[14:]
+      await message.channel.send(x_url)
+
+
+def main():
+    #環境変数からtokenを取ってくる
+    TOKEN = sys.argv[1]
+    #すべての機能を使えるようにする
+    intents = discord.Intents.all()
+    #intentsは必須パラメータ
+    client = MyClient(intents=intents)
+    #Discord接続
+    client.run(TOKEN)
+
+if __name__ == "__main__":
+    main()
