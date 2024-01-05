@@ -10,11 +10,10 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-  print("test")
   str_box = message.content
   if message.author.bot:
     return
-  elif "test-hi" in message.content :
+  elif str_box == "test" :
     await message.channel.send("hi")
 
 TOKEN = os.getenv("DISCORD_TOKEN")
