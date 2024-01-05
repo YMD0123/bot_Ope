@@ -1,4 +1,4 @@
-discord.py==2.3.2
+discord.py==2.1.1
 Flask==3.0.0
 keep-alive==0.0.1
 thread==0.1.3
