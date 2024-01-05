@@ -1,6 +1,8 @@
 import discord
 import os
 from keep_alive import keep_alive
+from logging import getLogger
+
 
 client = discord.Client(intents=discord.Intents.default())
 
@@ -16,6 +18,8 @@ async def on_message(message):
   if message.content == "/hi":
     await message.channel.send("hi")
 
+logger = getLogger(__name__)
+logger.info('message')
 TOKEN = os.getenv("DISCORD_TOKEN")
 # Web サーバの立ち上げ
 keep_alive()
