@@ -14,7 +14,7 @@ async def on_message(message):
   str_box = message.content
   if message.author.bot:
     return
-  elif message.content == "/hi":
+  elif "test-hi" in message.content :
     await message.channel.send("hi")
 
 TOKEN = os.getenv("DISCORD_TOKEN")
