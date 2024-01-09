@@ -38,7 +38,7 @@ def main():
 
   try:
     #Discord接続(エラー発生用)
-    client.run("ABC")
+    client.run(TOKEN)
 
     if (client.is_closed()):
       #discord.errors.HTTPException: 429 Too Many Requests対策
