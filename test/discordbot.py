@@ -25,14 +25,14 @@ class MyClient(discord.Client):
 
 
 def main():
-    #環境変数からtokenを取ってくる
-    TOKEN = sys.argv[1]
-    #すべての機能を使えるようにする
-    intents = discord.Intents.all()
-    #intentsは必須パラメータ
-    client = MyClient(intents=intents)
-    #Discord接続
-    client.run(TOKEN)
+  #環境変数からtokenを取ってくる
+  TOKEN = sys.argv[1]
+  #すべての機能を使えるようにする
+  intents = discord.Intents.all()
+  #intentsは必須パラメータ
+  client = MyClient(intents=intents)
+  #Discord接続
+  client.run(TOKEN)
 
 if __name__ == "__main__":
-    main()
+  main()

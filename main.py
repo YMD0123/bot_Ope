@@ -26,7 +26,7 @@ class MyClient(discord.Client):
 
 
 def main():
-    #環境変数からtokenを取ってくる
+  #環境変数からtokenを取ってくる
   TOKEN = os.getenv("DISCORD_TOKEN")
   keep_alive()
   #すべての機能を使えるようにする
@@ -37,6 +37,5 @@ def main():
   client.run(TOKEN)
 
 if __name__ == "__main__":
-  
   # Web サーバの立ち上げ
   main()
