@@ -22,15 +22,13 @@ class MyClient(discord.Client):
       await message.channel.send(x_url)
     elif str_box[0:13] == "https://x.com":
       x_url = "https://vxtwitter.com/" + message.content[14:]
-      await message.channel.send(x_url)
+
 def main():
   #タイムゾーン調整
   tz_jst = datetime.timezone(datetime.timedelta(hours=9))
-
   #環境変数からtokenを取ってくる
   TOKEN = os.getenv("DISCORD_TOKEN")
   keep_alive()
-
   #すべての機能を使えるようにする
   intents = discord.Intents.all()
   #クラス生成、intentsは必須パラメータ
