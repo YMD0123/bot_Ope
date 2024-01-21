@@ -20,10 +20,12 @@ class MyClient(discord.Client):
       x_url = "https://vxtwitter.com/" + message.content[20:]
       await message.channel.send(x_url)
       await message.channel.send(message.author)
+      await message.delete()
     elif str_box[0:13] == "https://x.com":
       x_url  = "https://vxtwitter.com/" + message.content[14:]
       await message.channel.send(x_url)
       await message.channel.send(message.author)
+      await message.delete()
 
 
 
