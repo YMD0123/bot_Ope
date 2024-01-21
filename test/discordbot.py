@@ -19,9 +19,12 @@ class MyClient(discord.Client):
     elif str_box[0:19] == "https://twitter.com":
       x_url = "https://vxtwitter.com/" + message.content[20:]
       await message.channel.send(x_url)
+      await message.channel.send(message.author)
     elif str_box[0:13] == "https://x.com":
-      x_url = "https://vxtwitter.com/" + message.content[14:]
+      x_url  = "https://vxtwitter.com/" + message.content[14:]
       await message.channel.send(x_url)
+      await message.channel.send(message.author)
+
 
 
 
