@@ -1,8 +1,14 @@
 
 import discord
 import sys
+client = discord.Client(intents=discord.Intents.all())
+channel1 = client.get_channel(1196743997465575424)
 
 class MyClient(discord.Client):
+  #botが終了した時
+  async def on_close(self):
+    await channel1.send('See you')
+
   #メッセージが書き込まれた時
   async def on_message(self, message):
     str_box = message.content
@@ -12,6 +18,7 @@ class MyClient(discord.Client):
     elif "/stop" in message.content:
       #ログオフ
       await message.channel.send("Goodbye")
+      await channel1.send('See you')
       await self.close()
       return 
     elif message.content == "/hi":
