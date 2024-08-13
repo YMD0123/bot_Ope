@@ -78,8 +78,7 @@ def main():
 
   try:
     #Discord接続(エラー発生用)
-
-
+    
     if (client.is_closed()):
       #discord.errors.HTTPException: 429 Too Many Requests対策
       SysClose()
@@ -90,8 +89,6 @@ def main():
     errorText += str(e) + "\n"
 
     print("\n" + errorText)
-    #エラーログを保存
-    LogWrite(errorText)
     #discord.errors.HTTPException: 429 Too Many Requests対策
     SysClose()
 
@@ -100,15 +97,6 @@ def SysClose():
   print("osを切ります")
   os.system("kill 1")
 
-#エラーログを保存する
-def LogWrite(logText):
-  sleepTime = 12
-  textFile = open('log.txt', 'a')
-  textFile.write(logText)
-  textFile.close()
-  print("処理が終わるまで待ちます:" + str(sleepTime) + "秒")
-  #更新が終わるまで待たせる(早いと更新が正常に終わらない)
-  time.sleep(sleepTime)
 
 if __name__ == "__main__":
   main()
