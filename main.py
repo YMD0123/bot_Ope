@@ -3,6 +3,9 @@ import os, datetime, time
 from keep_alive import keep_alive
 
 class MyClient(discord.Client):
+
+#テスト時はtestディレクトリにあるdiscordbot.pyを使う
+
   #メッセージが書き込まれた時
   async def on_message(self, message):
     if message.author.bot:
