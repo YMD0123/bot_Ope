@@ -2,9 +2,13 @@ import discord
 import os, datetime, time
 from keep_alive import keep_alive
 
+client = discord.Client(intents=discord.Intents.default())
+
 class MyClient(discord.Client):
 
 #テスト時はtestディレクトリにあるdiscordbot.pyを使う
+  #起動時
+
 
   #メッセージが書き込まれた時
   async def on_message(self, message):
@@ -63,7 +67,9 @@ class MyClient(discord.Client):
         await channel1.send(message.author)
 
 
-
+  async def on_ready(self):  # selfを追加
+    channel1 = self.get_channel(1196743997465575424)
+    await channel1.send("起動しました")
 
 def main():
   #タイムゾーン調整
