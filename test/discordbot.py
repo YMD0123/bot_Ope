@@ -1,38 +1,63 @@
 
 import discord
 import sys
-client = discord.Client(intents=discord.Intents.all())
-channel1 = client.get_channel(1196743997465575424)
 
 class MyClient(discord.Client):
-  #botが終了した時
-  async def on_close(self):
-    await channel1.send('See you')
-
   #メッセージが書き込まれた時
   async def on_message(self, message):
+    if message.author.bot:
+      return
+    elif "/stop" in message.content:
+    #ログオフ
+      await message.channel.send("Goodbye")
+      await self.close()
+      return 
+
     str_box = message.content
+    channel1 = self.get_channel(1196743997465575424) #logチャンネル
     #送信者がbot自身の場合はコマンドを無効にする
     if message.author.bot:
       return
     elif "/stop" in message.content:
       #ログオフ
       await message.channel.send("Goodbye")
-      await channel1.send('See you')
       await self.close()
       return 
+    
+
     elif message.content == "/hi":
-      await message.channel.send("hi")
-    elif str_box[0:19] == "https://twitter.com":
-      x_url = "https://vxtwitter.com/" + message.content[20:]
+      await message.channel.send("hi")  
+      if(channel1 != None):
+        await channel1.send("hi")
+
+    elif str_box.find("https://twitter.com") != -1:
+      x_point = str_box.find("https://twitter.com")
+      x_url  = "https://vxtwitter.com/" + message.content[x_point+20:]
+      if(x_url.count('/') <= 3):
+        return
       await message.channel.send(x_url)
       await message.channel.send(message.author)
-      await message.delete()
-    elif str_box[0:13] == "https://x.com":
-      x_url  = "https://vxtwitter.com/" + message.content[14:]
+      if(x_point == 0):
+        await message.delete()
+      if(channel1 != None):
+        await channel1.send(x_url)
+        await channel1.send(message.author)
+
+
+
+
+    elif str_box.find("https://x.com") != -1:
+      x_point = str_box.find("https://x.com")
+      x_url  = "https://vxtwitter.com/" + message.content[x_point+14:]
+      if(x_url.count('/') <= 3):
+        return
       await message.channel.send(x_url)
       await message.channel.send(message.author)
-      await message.delete()
+      if(x_point == 0):
+        await message.delete()
+      if(channel1 != None):
+        await channel1.send(x_url)
+        await channel1.send(message.author)
 
 
 
