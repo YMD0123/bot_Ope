@@ -15,21 +15,26 @@ class MyClient(discord.Client):
 
     str_box = message.content
     channel1 = self.get_channel(1196743997465575424) #logチャンネル
+
+
     #送信者がbot自身の場合はコマンドを無効にする
     if message.author.bot:
       return
+    
+    #/stopコマンド＝bot停止
     elif "/stop" in message.content:
       #ログオフ
       await message.channel.send("Goodbye")
       await self.close()
       return 
     
-
+    #/hiコマンド＝存在確認
     elif message.content == "/hi":
       await message.channel.send("hi")  
       if(channel1 != None):
         await channel1.send("hi")
 
+    #https://twitter.comが
     elif str_box.find("https://twitter.com") != -1:
       x_point = str_box.find("https://twitter.com")
       x_url  = "https://vxtwitter.com/" + message.content[x_point+20:]
