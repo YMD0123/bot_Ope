@@ -1,5 +1,6 @@
 import discord
 import os, datetime, time
+from keep_alive import keep_alive
 
 class MyClient(discord.Client):
   #botクラスの処理内容
@@ -48,8 +49,6 @@ class MyClient(discord.Client):
         await channel1.send(message.author)
 
 
-
-
     elif str_box.find("https://x.com") != -1:
       x_point = str_box.find("https://x.com")
       x_url  = "https://vxtwitter.com/" + message.content[x_point+14:]
@@ -72,10 +71,13 @@ def main():
   intents = discord.Intents.all()
   #クラス生成、intentsは必須パラメータ
   client = MyClient(intents=intents)
-  TOKEN = os.getenv("DISCORD_TOKEN")
-  
+
+
   try:
-    #Discord接続(エラー発生用)
+    #Discord接続
+    TOKEN = os.getenv("DISCORD_TOKEN")
+    # Web サーバの立ち上げ
+    keep_alive()
     client.run(TOKEN)
 
     if (client.is_closed()):
