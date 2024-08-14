@@ -63,7 +63,7 @@ class MyClient(discord.Client):
         await channel1.send(x_url)
         await channel1.send(message.author)
 
-        
+
 def main():
   #タイムゾーン調整
   tz_jst = datetime.timezone(datetime.timedelta(hours=9))
@@ -72,10 +72,11 @@ def main():
   intents = discord.Intents.all()
   #クラス生成、intentsは必須パラメータ
   client = MyClient(intents=intents)
-
+  TOKEN = os.getenv("DISCORD_TOKEN")
+  
   try:
     #Discord接続(エラー発生用)
-    client.run("ABC")
+    client.run(TOKEN)
 
     if (client.is_closed()):
       #discord.errors.HTTPException: 429 Too Many Requests対策
